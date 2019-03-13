@@ -108,7 +108,7 @@ You will now be ready to move to the next step.
 
 First make sure no firewall is running (or one is properly configured to allow iotivity-related traffic and especially multicast traffic) on the machine(s) where these applications are running.
 
-The demonstration requires nodes supporting BLE with HRS and BAS profiles. I have used Nodic NRF modules programmed with Nordik SDK. One node supports HRS and BAS profile and the second supports blood pressure monitor (BPM) and BAS. One can also use the Noridc NRF tooklbox or BLE-Sim apps on Android or IPhone to smiulate nodes with certain GATT profiles on a smart phone. The machine used to run the ble_ocf_bridge had an Intel module with BLE v4.2 running Bluez 5.3  stack.
+The demonstration requires nodes supporting BLE with HRS and BAS profiles. I have used Nodic NRF modules programmed with Nordik SDK. One node supports HRS and BAS profile and the second supports blood pressure monitor (BPM) and BAS. One can also use the Noridc NRF tooklbox or BLE-Sim apps on Android or IPhone to simulate nodes with certain GATT profiles on a smart phone. The machine used to run the ble_ocf_bridge had an Intel module with BLE v4.2 running Bluez 5.3  stack.
 
 1. Go to the root directory of `ble-ocf-bridge.js`, open a shell terminal, and execute </br> 
    `node  js/rd-server.js`</br>
