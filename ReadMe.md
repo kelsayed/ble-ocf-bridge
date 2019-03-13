@@ -72,9 +72,9 @@ The node.js implementation is fully based on Javascript asynchronous events hand
 
 
 
-### Examples
+### Helper programs
 
-The node.js JavaScript examples are located in [js/](./js/) . 
+The node.js JavaScript helper programs are located in [js/](./js/) . 
 
 #### Setting the OCF  Security Credentials
 
@@ -87,21 +87,20 @@ In order to be able to run the ble-ocf bridge, all OCF transactions must be secu
 
 When operated with these JSON files, all OCF devices are considered already provisioned and owned. This is not a limitation as any other OCF provisioning model can be supported by simply changing the security/provisioning json files. Interested readers should consult Iotivity wiki guide on [provisioning](https://wiki.iotivity.org/provisioning) and the [presentation](https://openconnectivity.org/wp-content/uploads/2018/06/4.-Security-Introduction-Architecture.pdf) by Nathan Heldt-Sheller on OCF security. 
 
-To run the examples, the first thing we need to do is setup the security and provisioning credentials. Iotivity-node stores security-related information for a given script in a pre-defined directory. It does so by creating a directory `${HOME}/.iotivity-node`. Thereunder, it creates directories whose name is the sha256 checksum of the absolute path of the given node.js script and the security credential file is named `oic_svr_db.dat`. To facilitate this job, we provide a shell script that can be used to automate this job in the acl folder called`setup_sec_json.bash`. 
+To run the helper programs, the first thing we need to do is setup the security and provisioning credentials. Iotivity-node stores security-related information for a given script in a pre-defined directory. It does so by creating a directory `${HOME}/.iotivity-node`. Thereunder, it creates directories whose name is the sha256 checksum of the absolute path of the given node.js script and the security credential file is named `oic_svr_db.dat`. To facilitate this job, we provide a shell script that can be used to automate this job in the acl folder called`setup_sec_json.bash`. 
 
 Below we show how to setup the security credentials for ble-ocf-bridge. First, make sure that  `setup_sec_json.bash`has execute permission. If not do a `chmod 755 setup_sec_json.bash`.
 
 1. In the package root directory where ble-ocf-bridge.js is found, issue the following command:
 
     `acl/setup_sec_json.bash  ble-ocf-bridge.js  acl/working-server.json`</br>
-    `acl/setup_sec_json.bash  rd-server.js  acl/rd-server.json`</br>
+    
 
-2. cd js and issue the following commands and repeat for the remaining clients that you want to test with. We mainly demonstrate with `client-arg.observe.js`  and `client.get.coaps.js`</br>
- (**Update get client info**).
+2. cd js and issue the following commands and repeat for the remaining clients that you want to test with. We mainly use the `rd-server.js` and `client-arg.observe.js`  </br>
 
-   a-  `../acl/setup_sec_json.bash  client-arg.observe.js  ../acl/working-client.json`
+   a-  `acl/setup_sec_json.bash  rd-server.js  acl/rd-server.json`</br>
 
-   b-  `../acl/setup_sec_json.bash  client.get.coaps.js  ../acl/working-client2.json`
+   b-  `../acl/setup_sec_json.bash  client-arg.observe.js  ../acl/working-client.json`
 
 You will now be ready to move to the next step. 
 
