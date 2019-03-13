@@ -78,7 +78,7 @@ The node.js JavaScript helper programs are located in [js/](./js/) .
 
 #### Setting the OCF  Security Credentials
 
-In order to be able to run the ble-ocf bridge, all OCF transactions must be secured. Currently, the ble-ocf-bridge uses the simplest type of security authentication which is the usage of pre-shared keys (PSKs). The package provides example json files that contain proper credentials for the ble-ocf-bridge script and the multiple clients that are used to demonstrate the package. Currently there are three json files:
+In order to be able to run the ble-ocf bridge, all OCF transactions must be secured. Currently, the ble-ocf-bridge uses the simplest type of security authentication which is the usage of pre-shared keys (PSKs). The package provides example json files that contain proper credentials for the ble-ocf-bridge script and the multiple clients that are used to demonstrate the package. Currently there are four json files:
 
 1. working-server.json: This has ACL entries for the resources created for the  ble-ocf bridge and has wild card entries for those unknown resources that will be created as BLE devices are discovered. It contains credentials needed to access the RD-server. It also contains credentials for two (test/demo) clients with PSK credentials. 
 2. rd-server.json: This has ACL entries for the resource directory and clients' credentials (e.g. as in  working-server.json) allowed to access the RD.
@@ -108,7 +108,7 @@ You will now be ready to move to the next step.
 
 First make sure no firewall is running (or one is properly configured to allow iotivity-related traffic and especially multicast traffic) on the machine(s) where these applications are running.
 
-The demonstration requires nodes supporting BLE with HRS and BAS profiles. I have used Nodic NRF modules programmed with Nordik SDK. One node supports HRS and BAS profile and the second supports blood pressure monitor (BPM) and BAS. The machine used to run the ble_ocf_bridge had an Intel module with BLE v4.2 running Bluez 5.3  stack.
+The demonstration requires nodes supporting BLE with HRS and BAS profiles. I have used Nodic NRF modules programmed with Nordik SDK. One node supports HRS and BAS profile and the second supports blood pressure monitor (BPM) and BAS. One can also use the Noridc NRF tooklbox or BLE-Sim apps on Android or IPhone to smilate nodes with certain GATT profiles on a smart phone. The machine used to run the ble_ocf_bridge had an Intel module with BLE v4.2 running Bluez 5.3  stack.
 
 1. Go to the root directory of `ble-ocf-bridge.js`, open a shell terminal, and execute </br> 
    `node  js/rd-server.js`</br>
@@ -123,7 +123,7 @@ The demonstration requires nodes supporting BLE with HRS and BAS profiles. I hav
 4. Now turn on the NRF modules or other BLE modules one at a time. The bridge should immediately discover both devices and create multiple resources. My two devices had a UUID of cec2aa5def41 and ef4eb89335f7 respectively. If the bridge does not discover all devices, better turn on one device at a time. This really depends on how good your BLE subsystem is. The resources created for my two devices were:
 	  1.  /a/hrm/cec2aa5def41/180d: 180d is UUID of heart rate service
 	  2.  /a/bas/cec2aa5def41/180f: 180f is UUID of battery service
-	  3. /a/hrm/ef4eb89335f7/180d: 180d is UUID of heart rate service
+	  3.  /a/hrm/ef4eb89335f7/180d: 180d is UUID of heart rate service
 
 5. Now, it is time to start some OCF clients. Issue an observer client  by issuing </br> 
    `node  js/client-arg.observe.js /a/hrm/cec2aa5def41/180d 100` </br>
